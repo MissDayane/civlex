@@ -1,6 +1,5 @@
-package com.civlex.civlex.dto;
+package com.civlex.civlex.dto.createDTO;
 
-import com.civlex.civlex.models.enums.StatusAccount;
 import com.civlex.civlex.models.address.Address;
 
 import lombok.AllArgsConstructor;
@@ -12,14 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsersDto {
+public class UsersCreateDto { // DTO para criação (entrada de dados)
 
-    private Long id;
     private String nome;
     private String email;
     private String telefone;
     private String fotoPerfil;
-    private StatusAccount statusAccount;
     private Address endereco;
 
 }
