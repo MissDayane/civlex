@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface BeneficiaryRepository extends JpaRepository {
-    Optional<Beneficiary> findByEmail(String Email);
-    Boolean existByCadUnico(String CadUnico);
-    boolean existsByEmail(String email)/;
-
-
+public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Long> {
+    Optional<Beneficiary> findByEmail(String email);
+    Boolean existsByCadUnico(String cadUnico);
+    boolean existsByEmail(String email);
 }
