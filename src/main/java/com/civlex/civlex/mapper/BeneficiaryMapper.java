@@ -1,11 +1,12 @@
 package com.civlex.civlex.mapper;
 
 import com.civlex.civlex.dto.createDTO.BeneficiaryCreateDto;
+import com.civlex.civlex.dto.responseDTO.BeneficiaryResponseDTO;
 import com.civlex.civlex.models.users.Beneficiary;
 
 public class BeneficiaryMapper {
 
-    public static BeneficiaryCreateDto toDTO(Beneficiary beneficiary) {
+    public static BeneficiaryResponseDTO toDTO(Beneficiary beneficiary) {
         if (beneficiary == null) return null;
 
         return BeneficiaryCreateDto.builder()
@@ -19,7 +20,7 @@ public class BeneficiaryMapper {
                 .build();
     }
 
-    public static Beneficiary toEntity(BeneficiaryCreateDto dto) {
+    public static Beneficiary toEntity(BeneficiaryResponseDTO dto) {
         if (dto == null) return null;
 
         return Beneficiary.builder()
@@ -27,9 +28,7 @@ public class BeneficiaryMapper {
                 .cpf(dto.getCpf())
                 .telefone(dto.getTelefone())
                 .fotoPerfil(dto.getFotoPerfil())
-                .email(dto.getEmail())
                 .cadUnico(dto.getCadUnico())
-                .cadUnicoAnexo(dto.getCadUnicoAnexo())
                 .build();
     }
 }

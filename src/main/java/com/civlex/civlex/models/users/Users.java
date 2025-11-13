@@ -46,8 +46,4 @@ public class Users {
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Address endereco;
 
-
-
-
-
 }

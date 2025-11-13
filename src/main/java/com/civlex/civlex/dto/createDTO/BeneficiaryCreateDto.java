@@ -1,17 +1,14 @@
 package com.civlex.civlex.dto.createDTO;
-
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Data
-@Builder
-@AllArgsConstructor
+@SuperBuilder
+@Getter
+@Setter
 @NoArgsConstructor
-public class BeneficiaryCreateDto {
-    private String nome;
-    private String cpf;
-    private String telefone;
-    private String fotoPerfil;
-    private String email;
+@AllArgsConstructor
+public class BeneficiaryCreateDto extends UsersCreateDto {
+
     private String cadUnico;
     private String cadUnicoAnexo;
 }

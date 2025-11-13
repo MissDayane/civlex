@@ -1,14 +1,16 @@
 package com.civlex.civlex.mapper;
 
 import com.civlex.civlex.dto.createDTO.UsersCreateDto;
+import com.civlex.civlex.dto.responseDTO.UsersResponseDTO;
 import com.civlex.civlex.models.users.Users;
 
 public class UserMapper {
 
-    public static UsersCreateDto toDTO(Users user) {
+    public static UsersResponseDTO toDTO(Users user) {
         if (user == null) return null;
 
-        return UsersCreateDto.builder()
+        return UsersResponseDTO.builder()
+                .id(user.getId())
                 .nome(user.getNome())
                 .cpf(user.getCpf())
                 .telefone(user.getTelefone())

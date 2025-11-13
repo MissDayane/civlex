@@ -1,21 +1,20 @@
-package com.civlex.civlex.dto.createDTO;
+package com.civlex.civlex.dto.responseDTO;
 
-import com.civlex.civlex.models.address.Address;
+import com.civlex.civlex.dto.responseDTO.AddressResponseDTO;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsersCreateDto {
-
+@SuperBuilder
+public abstract class UsersResponseDTO {
+    private Long id;
     private String nome;
     private String email;
     private String telefone;
     private String fotoPerfil;
     private String cpf;
-    private Address endereco;
-    private String senha;
+//    private String endereco;
 }
