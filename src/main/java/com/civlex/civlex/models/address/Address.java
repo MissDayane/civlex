@@ -27,4 +27,7 @@ public class Address {
 
     @Column(nullable = false)
     private String cep;
+
+    private String complemento;
+    private String bairro;
 }

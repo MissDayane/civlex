@@ -1,6 +1,6 @@
 package com.civlex.civlex.dto.responseDTO;
 
-import com.civlex.civlex.models.enums.SpecialtyLowyer;
+import com.civlex.civlex.models.enums.SpecialtyLawyer;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class LawyerResponseDTO extends UsersResponseDTO {
+
     private String oab;
-    private SpecialtyLowyer specialty;
+    private SpecialtyLawyer specialty;
 }

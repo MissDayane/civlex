@@ -9,26 +9,25 @@ public class BeneficiaryMapper {
     public static BeneficiaryResponseDTO toDTO(Beneficiary beneficiary) {
         if (beneficiary == null) return null;
 
-        return BeneficiaryCreateDto.builder()
-                .nome(beneficiary.getNome())
-                .cpf(beneficiary.getCpf())
-                .telefone(beneficiary.getTelefone())
-                .fotoPerfil(beneficiary.getFotoPerfil())
-                .email(beneficiary.getEmail())
-                .cadUnico(beneficiary.getCadUnico())
-                .cadUnicoAnexo(beneficiary.getCadUnicoAnexo())
-                .build();
+        BeneficiaryResponseDTO dto = BeneficiaryResponseDTO.builder().build();
+
+        UserMapper.mapCommonFieldsToDTO(beneficiary, dto);
+
+        dto.setCadUnico(beneficiary.getCadUnico());
+        dto.setCadUnicoAnexo(beneficiary.getCadUnicoAnexoUrl());
+
+        return dto;
     }
 
-    public static Beneficiary toEntity(BeneficiaryResponseDTO dto) {
+    public static Beneficiary toEntity(BeneficiaryCreateDto dto) {
         if (dto == null) return null;
 
-        return Beneficiary.builder()
-                .nome(dto.getNome())
-                .cpf(dto.getCpf())
-                .telefone(dto.getTelefone())
-                .fotoPerfil(dto.getFotoPerfil())
-                .cadUnico(dto.getCadUnico())
-                .build();
+        Beneficiary beneficiary = Beneficiary.builder().build();
+        UserMapper.mapCommonFieldsToEntity(dto, beneficiary);
+
+        beneficiary.setCadUnico(dto.getCadUnico());
+        beneficiary.setCadUnicoAnexoUrl(dto.getCadUnicoAnexo());
+
+        return beneficiary;
     }
 }

@@ -9,5 +9,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class BeneficiaryResponseDTO extends UsersResponseDTO {
+
     private String cadUnico;
+    private String cadUnicoAnexo;
 }

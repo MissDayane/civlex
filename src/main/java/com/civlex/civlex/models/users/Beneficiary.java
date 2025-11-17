@@ -1,9 +1,8 @@
 package com.civlex.civlex.models.users;
 
-import com.civlex.civlex.models.address.Address;
-import com.civlex.civlex.models.enums.StatusAccount;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,14 +14,15 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @SuperBuilder
-public class Beneficiary extends Users {
+public class Beneficiary extends User {
 
+    @NotBlank
+    @Pattern(regexp = "\\d{11}", message = "O CadÚnico deve conter exatamente 11 dígitos")
     @Column(name = "cadunico", nullable = false, unique = true, length = 11)
     private String cadUnico;
 
+    @NotBlank
     @Column(name = "cadunico_anexo", nullable = false)
-    private String cadUnicoAnexo;
-
+    private String cadUnicoAnexoUrl;
 }

@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Long> {
     Optional<Beneficiary> findByEmail(String email);
-    Boolean existsByCadUnico(String cadUnico);
     boolean existsByEmail(String email);
+    boolean existsByCadUnico(String cadUnico);
 }

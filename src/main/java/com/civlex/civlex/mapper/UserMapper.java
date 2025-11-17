@@ -2,32 +2,29 @@ package com.civlex.civlex.mapper;
 
 import com.civlex.civlex.dto.createDTO.UsersCreateDto;
 import com.civlex.civlex.dto.responseDTO.UsersResponseDTO;
-import com.civlex.civlex.models.users.Users;
+import com.civlex.civlex.models.users.User;
 
 public class UserMapper {
 
-    public static UsersResponseDTO toDTO(Users user) {
-        if (user == null) return null;
-
-        return UsersResponseDTO.builder()
-                .id(user.getId())
-                .nome(user.getNome())
-                .cpf(user.getCpf())
-                .telefone(user.getTelefone())
-                .fotoPerfil(user.getFotoPerfil())
-                .email(user.getEmail())
-                .build();
+    public static void mapCommonFieldsToDTO(User user, UsersResponseDTO dto) {
+        dto.setId(user.getId());
+        dto.setNome(user.getNome());
+        dto.setEmail(user.getEmail());
+        dto.setTelefone(user.getTelefone());
+        dto.setFotoPerfil(user.getFotoPerfil());
+        dto.setCpf(user.getCpf());
+        dto.setEndereco(AddressMapper.toDTO(user.getEndereco()));
     }
 
-    public static Users toEntity(UsersCreateDto dto) {
-        if (dto == null) return null;
+    public static void mapCommonFieldsToEntity(UsersCreateDto dto, User user) {
+        user.setNome(dto.getNome());
+        user.setEmail(dto.getEmail());
+        user.setTelefone(dto.getTelefone());
+        user.setFotoPerfil(dto.getFotoPerfil());
+        user.setCpf(dto.getCpf());
+        user.setSenha(dto.getSenha());
 
-        return Users.builder()
-                .nome(dto.getNome())
-                .cpf(dto.getCpf())
-                .telefone(dto.getTelefone())
-                .fotoPerfil(dto.getFotoPerfil())
-                .email(dto.getEmail())
-                .build();
+        if (dto.getEndereco() != null)
+            user.setEndereco(dto.getEndereco());
     }
 }

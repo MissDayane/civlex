@@ -2,6 +2,7 @@ package com.civlex.civlex.services;
 
 import com.civlex.civlex.dto.createDTO.CaseCreateDTO;
 import com.civlex.civlex.dto.responseDTO.CaseResponseDTO;
+import com.civlex.civlex.exceptions.NotFoundException;
 import com.civlex.civlex.mapper.CaseMapper;
 import com.civlex.civlex.models.cases.Case;
 import com.civlex.civlex.models.enums.StatusCase;
@@ -32,15 +33,15 @@ public class CaseService {
     public CaseResponseDTO findById(Long id) {
         return caseRepository.findById(id)
                 .map(CaseMapper::toDTO)
-                .orElseThrow(() -> new RuntimeException("Caso não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Caso não encontrado com ID: " + id));
     }
 
     public CaseResponseDTO createCase(CaseCreateDTO dto) {
         var beneficiary = beneficiaryRepository.findById(dto.getIdBeneficiario())
-                .orElseThrow(() -> new RuntimeException("Beneficiário não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Beneficiário não encontrado com ID: " + dto.getIdBeneficiario()));
 
         var lawyer = lawyerRepository.findById(dto.getIdAdvogado())
-                .orElseThrow(() -> new RuntimeException("Advogado não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Advogado não encontrado com ID: " + dto.getIdAdvogado()));
 
         var novoCaso = Case.builder()
                 .titulo(dto.getTitulo())
@@ -54,5 +55,14 @@ public class CaseService {
 
         caseRepository.save(novoCaso);
         return CaseMapper.toDTO(novoCaso);
+        }
+
+    public CaseResponseDTO updateStatus(Long id, StatusCase status) {
+        Case c = caseRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Caso não encontrado com ID: " + id));
+
+        c.setStatusCase(status);
+        caseRepository.save(c);
+        return CaseMapper.toDTO(c);
     }
 }

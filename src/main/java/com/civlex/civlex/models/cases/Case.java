@@ -1,5 +1,6 @@
 package com.civlex.civlex.models.cases;
 
+import com.civlex.civlex.models.enums.SpecialtyLawyer;
 import com.civlex.civlex.models.enums.StatusCase;
 import com.civlex.civlex.models.users.Beneficiary;
 import com.civlex.civlex.models.users.Lawyer;
@@ -36,13 +37,14 @@ public class Case {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String descricao;
 
-    @Column(nullable = false, length = 80)
-    private String especialidade;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private SpecialtyLawyer especialidade;
 
     @Column(name = "data_abertura", nullable = false)
     private LocalDate dataAbertura;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(name = "status", nullable = false)
     private StatusCase statusCase;
 }

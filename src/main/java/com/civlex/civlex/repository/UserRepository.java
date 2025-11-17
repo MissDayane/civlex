@@ -1,14 +1,15 @@
 package com.civlex.civlex.repository;
 
-import com.civlex.civlex.models.users.Users;
+import com.civlex.civlex.models.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Long> {
-    Optional<Users> findByEmail(String email);
-    boolean existsByCpf(String cpf);
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
     boolean existsByEmail(String email);
+    boolean existsByCpf(String cpf);
+    boolean existsById(Long id);
 }
