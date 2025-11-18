@@ -27,4 +27,10 @@ public class Lawyer extends User {
     @Enumerated(EnumType.STRING)
     @Column(name = "especialidade", nullable = false)
     private SpecialtyLawyer specialty;
+
+    @Column(nullable = false)
+    private Boolean status = false; // false = pendente, true = ativo
+
+    @Column(nullable = true)
+    private String fotoPerfil; // caminho do arquivo no servido
 }

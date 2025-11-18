@@ -11,6 +11,7 @@ import lombok.*;
 public class AddressCreateDTO {
 
     @NotBlank(message = "CEP é obrigatório")
+    //Pattern: validar strings com expressões regulares (regex).
     @Pattern(regexp = "\\d{5}-\\d{3}", message = "CEP deve ter o formato 00000-000")
     private String cep;
 

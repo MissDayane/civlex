@@ -21,7 +21,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
+    @EqualsAndHashCode.Include //Define que apenas os campos marcados com @Include serão usados em equals() e hashCode()
     private Long id;
 
     @NotBlank

@@ -13,7 +13,8 @@ import lombok.experimental.SuperBuilder;
 public class BeneficiaryCreateDto extends UsersCreateDto {
 
     @NotBlank(message = "O CadÚnico é obrigatório.")
-    @Pattern(
+    //Pattern: validar strings com expressões regulares (regex).
+    @Pattern (
             regexp = "\\d{11}",
             message = "O CadÚnico deve conter exatamente 11 dígitos numéricos."
     )
